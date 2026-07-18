@@ -1,9 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { LogOut } from "lucide-react";
 
@@ -20,8 +31,11 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
 
   const handleSignOut = async () => {
+    setSigningOut(true);
     const supabase = createClient();
     await supabase.auth.signOut();
     window.location.href = "/login";
@@ -58,14 +72,41 @@ export default function AccountLayout({
         </nav>
 
         <div className="border-t p-3">
-          <Button
-            variant="ghost"
-            className="w-full justify-start"
-            onClick={handleSignOut}
-          >
-            <LogOut className="mr-2 size-4" />
-            Sign out
-          </Button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                />
+              }
+            >
+              <LogOut className="mr-2 size-4" />
+              Sign out
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Sign out</DialogTitle>
+                <DialogDescription>
+                  Are you sure you want to sign out?
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose
+                  render={<Button variant="outline" disabled={signingOut} />}
+                >
+                  Cancel
+                </DialogClose>
+                <Button
+                  variant="destructive"
+                  onClick={handleSignOut}
+                  disabled={signingOut}
+                >
+                  {signingOut ? "Signing out..." : "Sign Out"}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </aside>
 
