@@ -1,8 +1,11 @@
 export { AnimatedBackground } from "./AnimatedBackground";
+export { ComparisonTable } from "./ComparisonTable";
 export { FeatureCarousel } from "./FeatureCarousel";
 export { PricingCard } from "./PricingCard";
 export { PricingCards } from "./PricingCards";
+export { PricingCTA } from "./PricingCTA";
 export { PricingHero } from "./PricingHero";
 export { pricingTiers } from "./pricing-data";
+export { SocialProof } from "./SocialProof";
 export { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 export type { PricingCardProps, PricingTier, BuyButtonProps } from "./types";

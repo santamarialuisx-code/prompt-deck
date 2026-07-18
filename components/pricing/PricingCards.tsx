@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "motion/react";
 import { PricingCard } from "./PricingCard";
 import { BuyButton } from "@/components/checkout/BuyButton";
@@ -27,8 +26,12 @@ const itemVariants = {
   },
 };
 
-export function PricingCards() {
-  const [selectedTier, setSelectedTier] = useState<string>("pro-permanente");
+type PricingCardsProps = {
+  selectedTier: string;
+  onSelectTier: (tierId: string) => void;
+};
+
+export function PricingCards({ selectedTier, onSelectTier }: PricingCardsProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
@@ -49,7 +52,7 @@ export function PricingCards() {
               <PricingCard
                 tier={tier}
                 selected={selectedTier === tier.id}
-                onSelect={setSelectedTier}
+                onSelect={onSelectTier}
               />
               <div className="mt-4">
                 <BuyButton
