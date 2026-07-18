@@ -135,3 +135,65 @@
     color: var(--accent-orange, #f97316);
   }
 }
+
+/* Pricing tier color tokens */
+:root {
+  --accent-orange: #f97316;
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --accent-green: #10b981;
+}
+
+.dark {
+  --accent-orange: #f97316;
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --accent-green: #10b981;
+}
+
+/* Aurora gradient background */
+.bg-aurora {
+  background: 
+    radial-gradient(at 20% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(34, 211, 238, 0.3) 0%, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(249, 115, 22, 0.3) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  animation: aurora 15s ease-in-out infinite;
+}
+
+.bg-glow-purple {
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+}
+
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}

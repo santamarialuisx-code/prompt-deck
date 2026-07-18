@@ -6,7 +6,13 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
-export function BuyButton() {
+type BuyButtonProps = {
+  tier: string;
+  label?: string;
+  variant?: "default" | "outline";
+};
+
+export function BuyButton({ tier, label, variant = "default" }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -23,7 +29,9 @@ export function BuyButton() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/checkout", { method: "POST" });
+      const res = await fetch(`/api/checkout?tier=${encodeURIComponent(tier)}`, {
+        method: "POST",
+      });
       const data = await res.json();
 
       if (data.checkoutUrl) {
@@ -36,15 +44,36 @@ export function BuyButton() {
     }
   };
 
+  const getButtonText = () => {
+    if (label) return label;
+    
+    switch (tier) {
+      case "free":
+        return "Get Started Free";
+      case "pro-permanente":
+        return "Get Lifetime Access — $29";
+      case "pro-suscripcion":
+        return "Subscribe Now — $9/mo";
+      default:
+        return "Get Access";
+    }
+  };
+
   return (
-    <Button size="lg" onClick={handleBuy} disabled={loading}>
+    <Button
+      size="lg"
+      variant={variant}
+      onClick={handleBuy}
+      disabled={loading}
+      className="w-full"
+    >
       {loading ? (
         <>
           <Loader2 className="mr-2 size-4 animate-spin" />
           Creating checkout...
         </>
       ) : (
-        "Get Lifetime Access — $29"
+        getButtonText()
       )}
     </Button>
   );
