@@ -34,7 +34,21 @@ export async function updateSession(request: NextRequest) {
   // issues with users being randomly logged out.
   //
   // Refresh session if expired - required for Server Components.
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  // Redirect unauthenticated users away from protected routes
+  if (
+    !user &&
+    (request.nextUrl.pathname.startsWith("/account") ||
+      request.nextUrl.pathname.startsWith("/prompts"))
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    url.searchParams.set("redirect", request.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }
