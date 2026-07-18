@@ -24,7 +24,7 @@ export default function PagoMovilPage() {
 
         <div className="rounded-xl border border-white/10 bg-[#111111] p-6">
           <div className="mb-4 flex items-center gap-2">
-            <CreditCard className="size-5 text-[#f97316]" />
+            <CreditCard className="size-5 text-[#84cc16]" />
             <h2 className="font-bold text-white">
               Bank Details
             </h2>

@@ -42,15 +42,15 @@ export function Footer() {
         {/* Trust badges */}
         <div className="flex items-center justify-center gap-8 mb-12 text-gray-500">
           <div className="flex items-center gap-2 text-sm">
-            <Shield className="h-4 w-4 text-[#f97316]" />
+            <Shield className="h-4 w-4 text-[#84cc16]" />
             <span>Secure Checkout</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <CreditCard className="h-4 w-4 text-[#f97316]" />
+            <CreditCard className="h-4 w-4 text-[#84cc16]" />
             <span>Pay Once, Own Forever</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <Lock className="h-4 w-4 text-[#f97316]" />
+            <Lock className="h-4 w-4 text-[#84cc16]" />
             <span>30-Day Guarantee</span>
           </div>
         </div>

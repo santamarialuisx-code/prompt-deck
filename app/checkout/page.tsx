@@ -43,7 +43,7 @@ export default function CheckoutPage() {
           <ul className="mb-8 space-y-3">
             {features.map((feature) => (
               <li key={feature} className="flex items-start gap-3">
-                <Check className="mt-0.5 size-4 shrink-0 text-[#f97316]" />
+                <Check className="mt-0.5 size-4 shrink-0 text-[#84cc16]" />
                 <span className="text-sm text-gray-300">
                   {feature}
                 </span>
@@ -64,15 +64,15 @@ export default function CheckoutPage() {
         {/* Trust signals */}
         <div className="flex items-center justify-center gap-6 text-xs text-gray-500">
           <div className="flex items-center gap-1.5">
-            <Shield className="h-4 w-4 text-[#f97316]" />
+            <Shield className="h-4 w-4 text-[#84cc16]" />
             <span>30-Day Guarantee</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <CreditCard className="h-4 w-4 text-[#f97316]" />
+            <CreditCard className="h-4 w-4 text-[#84cc16]" />
             <span>Instant Access</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Star className="h-4 w-4 text-[#f97316]" />
+            <Star className="h-4 w-4 text-[#84cc16]" />
             <span>4.9 Rating</span>
           </div>
         </div>

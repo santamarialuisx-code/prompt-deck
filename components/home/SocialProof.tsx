@@ -41,7 +41,7 @@ export function SocialProof() {
         <div className="grid grid-cols-3 gap-8 mb-16">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <stat.icon className="h-8 w-8 mx-auto mb-3 text-[#f97316]" />
+              <stat.icon className="h-8 w-8 mx-auto mb-3 text-[#84cc16]" />
               <div className="text-3xl font-black text-white">{stat.value}</div>
               <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
             </div>
@@ -65,7 +65,7 @@ export function SocialProof() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[#f97316] text-[#f97316]" />
+                    <Star key={i} className="h-4 w-4 fill-[#84cc16] text-[#84cc16]" />
                   ))}
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
@@ -84,7 +84,7 @@ export function SocialProof() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-400">
           {trustIndicators.map((ti) => (
             <div key={ti.label} className="flex items-center gap-2">
-              <ti.icon className="h-5 w-5 text-[#f97316]" />
+              <ti.icon className="h-5 w-5 text-[#84cc16]" />
               <span>{ti.label}</span>
             </div>
           ))}

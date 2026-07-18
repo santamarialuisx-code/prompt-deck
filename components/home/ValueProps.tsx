@@ -31,7 +31,7 @@ export function ValueProps() {
               key={prop.title}
               className="rounded-xl border border-white/5 bg-[#111111] p-8 text-center transition-all hover:border-white/10 hover:-translate-y-1"
             >
-              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#f97316]/10 text-[#f97316]">
+              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#84cc16]/10 text-[#84cc16]">
                 <prop.icon className="size-6" />
               </div>
               <h3 className="mt-4 text-lg font-bold text-white">

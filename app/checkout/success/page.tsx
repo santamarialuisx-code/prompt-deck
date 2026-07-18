@@ -5,7 +5,7 @@ export default function CheckoutSuccessPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a] px-4">
       <div className="w-full max-w-md space-y-6 text-center">
-        <CheckCircle2 className="mx-auto size-16 text-[#f97316]" />
+        <CheckCircle2 className="mx-auto size-16 text-[#84cc16]" />
 
         <div>
           <h1 className="text-3xl font-black tracking-tight text-white">
@@ -19,7 +19,7 @@ export default function CheckoutSuccessPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Link
             href="/account/prompts"
-            className="inline-flex h-10 items-center justify-center rounded-xl bg-[#f97316] px-6 text-sm font-bold text-white transition-all hover:bg-[#fb923c]"
+            className="inline-flex h-10 items-center justify-center rounded-xl bg-[#84cc16] px-6 text-sm font-bold text-white transition-all hover:bg-[#a3e635]"
           >
             Go to My Prompts
           </Link>

@@ -52,12 +52,12 @@ export function FeaturedCategories() {
             <Link
               key={cat.slug}
               href={`/gallery/${cat.slug}`}
-              className="group rounded-xl border border-white/5 bg-[#111111] p-6 transition-all hover:border-[#f97316]/30 hover:-translate-y-1"
+              className="group rounded-xl border border-white/5 bg-[#111111] p-6 transition-all hover:border-[#84cc16]/30 hover:-translate-y-1"
             >
-              <div className="flex size-10 items-center justify-center rounded-lg bg-[#f97316]/10 text-[#f97316]">
+              <div className="flex size-10 items-center justify-center rounded-lg bg-[#84cc16]/10 text-[#84cc16]">
                 <cat.icon className="size-5" />
               </div>
-              <h3 className="mt-3 text-lg font-bold text-white group-hover:text-[#f97316] transition-colors">
+              <h3 className="mt-3 text-lg font-bold text-white group-hover:text-[#84cc16] transition-colors">
                 {cat.name}
               </h3>
               <p className="mt-1 text-sm text-gray-400">

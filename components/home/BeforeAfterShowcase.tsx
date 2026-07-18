@@ -63,7 +63,7 @@ export function BeforeAfterShowcase() {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-full px-4 py-1.5 text-sm font-bold transition-all ${
                 activeCategory === cat
-                  ? "bg-[#f97316] text-white"
+                  ? "bg-[#84cc16] text-white"
                   : "border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-white/20"
               }`}
             >
@@ -79,7 +79,7 @@ export function BeforeAfterShowcase() {
               {/* Category badge */}
               <div className="flex items-center justify-between mb-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
-                  <Sparkles className="h-3 w-3 text-[#f97316]" />
+                  <Sparkles className="h-3 w-3 text-[#84cc16]" />
                   {example.category}
                 </span>
               </div>

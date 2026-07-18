@@ -18,15 +18,15 @@ export function FinalCTA() {
         {/* Trust indicators */}
         <div className="flex flex-wrap items-center justify-center gap-6 mt-8 mb-8 text-sm text-gray-400">
           <div className="flex items-center gap-2">
-            <Shield className="h-4 w-4 text-[#f97316]" />
+            <Shield className="h-4 w-4 text-[#84cc16]" />
             <span>30-Day Guarantee</span>
           </div>
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-[#f97316]" />
+            <Zap className="h-4 w-4 text-[#84cc16]" />
             <span>Instant Access</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-[#f97316]" />
+            <Clock className="h-4 w-4 text-[#84cc16]" />
             <span>Lifetime Updates</span>
           </div>
         </div>
@@ -34,7 +34,7 @@ export function FinalCTA() {
         <div className="mt-4">
           <Link
             href="/checkout"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#f97316] px-10 text-base font-bold text-white transition-all hover:bg-[#fb923c] hover:-translate-y-0.5"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#84cc16] px-10 text-base font-bold text-white transition-all hover:bg-[#a3e635] hover:-translate-y-0.5"
           >
             Get Lifetime Access — $29
           </Link>
