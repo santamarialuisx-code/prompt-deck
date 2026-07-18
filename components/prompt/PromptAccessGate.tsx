@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { BuyButton } from "@/components/checkout/BuyButton";
 import type { PromptFile } from "@/lib/mdx";
 
 interface PromptAccessGateProps {
@@ -79,9 +78,7 @@ export function PromptAccessGate({ prompt, hasAccess }: PromptAccessGateProps) {
           <p className="text-xs text-muted-foreground">
             Get lifetime access to all 150+ prompts
           </p>
-          <Link href="/checkout">
-            <Button size="sm">Get Lifetime Access</Button>
-          </Link>
+          <BuyButton />
         </div>
       </CardContent>
     </Card>
