@@ -1,0 +1,164 @@
+{
+  "generatedAt": "2026-07-18T10:54:55.505Z",
+  "totalPrompts": 9,
+  "categories": [
+    "product-photo-enhancement",
+    "selfie-to-artistic",
+    "selfie-to-headshot",
+    "selfie-to-professional-portrait",
+    "selfie-to-social-media"
+  ],
+  "freeSamples": 4,
+  "paidPrompts": 5,
+  "prompts": [
+    {
+      "slug": "amazon-listing-photo",
+      "id": "paid-product-amazon-001",
+      "title": "Amazon Listing Photo Optimization",
+      "category": "product-photo-enhancement",
+      "is_free": false,
+      "sort_order": 8,
+      "tools": [
+        "ChatGPT",
+        "Flair AI"
+      ],
+      "platforms": [
+        "Amazon",
+        "Etsy",
+        "Shopify"
+      ]
+    },
+    {
+      "slug": "anime-avatar-selfie",
+      "id": "paid-anime-avatar-001",
+      "title": "Anime Avatar from Selfie",
+      "category": "selfie-to-artistic",
+      "is_free": false,
+      "sort_order": 6,
+      "tools": [
+        "Midjourney",
+        "NovelAI"
+      ],
+      "platforms": [
+        "Discord",
+        "Gaming Profiles",
+        "Social Media"
+      ]
+    },
+    {
+      "slug": "artistic-oil-painting-portrait",
+      "id": "paid-artistic-oil-painting-001",
+      "title": "Artistic Oil Painting Portrait",
+      "category": "selfie-to-artistic",
+      "is_free": false,
+      "sort_order": 3,
+      "tools": [
+        "Midjourney",
+        "DALL-E"
+      ],
+      "platforms": [
+        "Print",
+        "Digital Art"
+      ]
+    },
+    {
+      "slug": "corporate-executive-headshot",
+      "id": "free-corporate-headshot-001",
+      "title": "Corporate Executive Headshot",
+      "category": "selfie-to-headshot",
+      "is_free": true,
+      "sort_order": 4,
+      "tools": [
+        "ChatGPT",
+        "Gemini"
+      ],
+      "platforms": [
+        "Company Website",
+        "LinkedIn",
+        "Press Kit"
+      ]
+    },
+    {
+      "slug": "instagram-social-media-photo",
+      "id": "free-social-media-profile-001",
+      "title": "Instagram-Ready Social Media Photo",
+      "category": "selfie-to-social-media",
+      "is_free": true,
+      "sort_order": 2,
+      "tools": [
+        "ChatGPT",
+        "Midjourney"
+      ],
+      "platforms": [
+        "Instagram",
+        "TikTok"
+      ]
+    },
+    {
+      "slug": "product-lifestyle-photo",
+      "id": "paid-product-lifestyle-001",
+      "title": "Product Lifestyle Photo Enhancement",
+      "category": "product-photo-enhancement",
+      "is_free": false,
+      "sort_order": 5,
+      "tools": [
+        "ChatGPT",
+        "Flair AI"
+      ],
+      "platforms": [
+        "E-commerce",
+        "Social Media Ads",
+        "Amazon"
+      ]
+    },
+    {
+      "slug": "professional-linkedin-headshot",
+      "id": "free-professional-portrait-001",
+      "title": "Professional LinkedIn Headshot",
+      "category": "selfie-to-professional-portrait",
+      "is_free": true,
+      "sort_order": 1,
+      "tools": [
+        "ChatGPT",
+        "Gemini"
+      ],
+      "platforms": [
+        "LinkedIn",
+        "Corporate Website"
+      ]
+    },
+    {
+      "slug": "tiktok-profile-glowup",
+      "id": "free-tiktok-profile-001",
+      "title": "TikTok Profile Glow-Up",
+      "category": "selfie-to-social-media",
+      "is_free": true,
+      "sort_order": 7,
+      "tools": [
+        "ChatGPT",
+        "Capcut"
+      ],
+      "platforms": [
+        "TikTok",
+        "Snapchat"
+      ]
+    },
+    {
+      "slug": "vintage-film-photo",
+      "id": "paid-vintage-photo-001",
+      "title": "Vintage Film Photo Effect",
+      "category": "selfie-to-artistic",
+      "is_free": false,
+      "sort_order": 9,
+      "tools": [
+        "Midjourney",
+        "Lightroom AI"
+      ],
+      "platforms": [
+        "Print",
+        "Instagram",
+        "Personal Use"
+      ]
+    }
+  ]
+}
