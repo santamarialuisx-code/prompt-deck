@@ -78,7 +78,7 @@ export function PromptAccessGate({ prompt, hasAccess }: PromptAccessGateProps) {
           <p className="text-xs text-muted-foreground">
             Get lifetime access to all 150+ prompts
           </p>
-          <BuyButton />
+          <BuyButton tier="pro-permanente" />
         </div>
       </CardContent>
     </Card>

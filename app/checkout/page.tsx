@@ -53,7 +53,7 @@ export default function CheckoutPage() {
 
           {/* CTA */}
           <div className="flex flex-col items-center gap-3">
-            <BuyButton />
+            <BuyButton tier="pro-permanente" />
             <p className="text-xs text-gray-500 flex items-center gap-1">
               <Lock className="h-3 w-3" />
               Secure payment via Lemon Squeezy
