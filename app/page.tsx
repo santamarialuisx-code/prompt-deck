@@ -1,7 +1,6 @@
 import { getAllPrompts } from "@/lib/mdx";
 import { canAccessPrompt } from "@/lib/access";
 import { Hero } from "@/components/home/Hero";
-import { SocialStrip } from "@/components/home/SocialProof";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
 import { ValueProps } from "@/components/home/ValueProps";
 import { PricingSection } from "@/components/home/PricingSection";
@@ -38,9 +37,6 @@ export default async function Home() {
 
   const categories = [...new Set(allPrompts.map((p) => p.category))].sort();
 
-  const promptCount = allPrompts.length;
-  const categoryCount = categories.length;
-
   const hasAccess = await canAccessPrompt(true);
 
   return (
@@ -53,14 +49,6 @@ export default async function Home() {
       {/* Hero */}
       <section id="hero">
         <Hero />
-      </section>
-
-      {/* Social Proof */}
-      <section id="social-proof">
-        <SocialStrip
-          promptCount={promptCount}
-          categoryCount={categoryCount}
-        />
       </section>
 
       {/* Gallery */}
