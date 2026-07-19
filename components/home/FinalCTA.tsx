@@ -9,8 +9,7 @@ export function FinalCTA() {
           Ready to level up your selfie game?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">
-          Join 2,400+ creators who transformed their content.
-          <span className="block mt-2 text-white font-bold">
+          <span className="block text-white font-bold">
             One payment. Lifetime access. No subscriptions.
           </span>
         </p>
@@ -33,7 +32,7 @@ export function FinalCTA() {
 
         <div className="mt-4">
           <Link
-            href="/checkout"
+            href="/#pricing"
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#84cc16] px-10 text-base font-bold text-white transition-all hover:bg-[#a3e635] hover:-translate-y-0.5"
           >
             Get Lifetime Access — $29

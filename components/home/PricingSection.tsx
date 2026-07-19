@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, Shield, CreditCard, Lock, Star } from "lucide-react";
+import { Check, Shield, CreditCard, Star, Lock } from "lucide-react";
 import { BuyButton } from "@/components/checkout/BuyButton";
 
 const features = [
@@ -10,20 +10,20 @@ const features = [
   "Organized by category",
 ];
 
-export default function CheckoutPage() {
+export function PricingSection() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a] px-4">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h1 className="text-3xl font-black tracking-tight text-white">
+    <section id="pricing" className="bg-[#0a0a0a] border-t border-white/5">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
             Get Lifetime Access
-          </h1>
-          <p className="mt-2 text-gray-400">
+          </h2>
+          <p className="mt-3 text-lg text-gray-400">
             One payment. Unlimited prompts. Forever.
           </p>
         </div>
 
-        <div className="rounded-xl border border-white/10 bg-[#111111] p-8">
+        <div className="mx-auto max-w-md rounded-xl border border-white/10 bg-[#111111] p-8">
           {/* Price anchoring */}
           <div className="mb-6 text-center">
             <div className="flex items-center justify-center gap-3 mb-2">
@@ -44,9 +44,7 @@ export default function CheckoutPage() {
             {features.map((feature) => (
               <li key={feature} className="flex items-start gap-3">
                 <Check className="mt-0.5 size-4 shrink-0 text-[#84cc16]" />
-                <span className="text-sm text-gray-300">
-                  {feature}
-                </span>
+                <span className="text-sm text-gray-300">{feature}</span>
               </li>
             ))}
           </ul>
@@ -62,7 +60,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Trust signals */}
-        <div className="flex items-center justify-center gap-6 text-xs text-gray-500">
+        <div className="flex items-center justify-center gap-6 mt-8 text-xs text-gray-500">
           <div className="flex items-center gap-1.5">
             <Shield className="h-4 w-4 text-[#84cc16]" />
             <span>30-Day Guarantee</span>
@@ -77,7 +75,7 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="text-center">
+        <div className="text-center mt-6">
           <Link
             href="/checkout/pago-movil"
             className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -86,6 +84,6 @@ export default function CheckoutPage() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

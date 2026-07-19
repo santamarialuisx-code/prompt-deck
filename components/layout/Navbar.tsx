@@ -11,9 +11,7 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/gallery", label: "Gallery" },
   { href: "/free", label: "Free Samples" },
-  { href: "/checkout", label: "Pricing" },
 ];
 
 export function Navbar() {
@@ -40,7 +38,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="/checkout"
+            href="/#pricing"
             className="inline-flex h-9 items-center justify-center rounded-lg bg-[#84cc16] px-4 text-sm font-bold text-white transition-all hover:bg-[#a3e635]"
           >
             Get Access
@@ -66,7 +64,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/checkout"
+                href="/#pricing"
                 onClick={() => setOpen(false)}
                 className="inline-flex h-10 items-center justify-center rounded-lg bg-[#84cc16] px-4 text-sm font-bold text-white mt-4 transition-all hover:bg-[#a3e635]"
               >

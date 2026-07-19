@@ -5,15 +5,13 @@ const footerSections = [
   {
     title: "Product",
     links: [
-      { href: "/gallery", label: "Gallery" },
       { href: "/free", label: "Free Samples" },
-      { href: "/checkout", label: "Pricing" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { href: "/gallery", label: "Browse Prompts" },
+      { href: "/#gallery", label: "Browse Prompts" },
       { href: "/free", label: "Try Free" },
     ],
   },
