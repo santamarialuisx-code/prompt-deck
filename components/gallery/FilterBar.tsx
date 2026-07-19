@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 
 interface FilterBarProps {
   categories: string[];
-  tools: string[];
-  platforms: string[];
   resultCount: number;
   totalCount: number;
   embedded?: boolean;
@@ -24,8 +22,6 @@ function formatLabel(value: string): string {
 
 export function FilterBar({
   categories,
-  tools,
-  platforms,
   resultCount,
   totalCount,
   embedded,
@@ -35,11 +31,9 @@ export function FilterBar({
   const [isPending, startTransition] = useTransition();
 
   const activeCategory = searchParams.get("category") || "";
-  const activeTool = searchParams.get("tool") || "";
-  const activePlatform = searchParams.get("platform") || "";
   const searchQuery = searchParams.get("q") || "";
 
-  const hasFilters = activeCategory || activeTool || activePlatform || searchQuery;
+  const hasFilters = activeCategory || searchQuery;
 
   const updateParam = useCallback(
     (key: string, value: string) => {
@@ -96,44 +90,6 @@ export function FilterBar({
               onClick={() => updateParam("category", activeCategory === cat ? "" : cat)}
             >
               {formatLabel(cat)}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* Tool filter */}
-      <div>
-        <p className="mb-2 text-sm font-medium text-muted-foreground">Tool</p>
-        <div className="flex flex-wrap gap-2">
-          {tools.map((tool) => (
-            <Button
-              key={tool}
-              size="sm"
-              variant={activeTool === tool ? "default" : "outline"}
-              onClick={() => updateParam("tool", activeTool === tool ? "" : tool)}
-            >
-              {tool}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* Platform filter */}
-      <div>
-        <p className="mb-2 text-sm font-medium text-muted-foreground">
-          Platform
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {platforms.map((platform) => (
-            <Button
-              key={platform}
-              size="sm"
-              variant={activePlatform === platform ? "default" : "outline"}
-              onClick={() =>
-                updateParam("platform", activePlatform === platform ? "" : platform)
-              }
-            >
-              {platform}
             </Button>
           ))}
         </div>

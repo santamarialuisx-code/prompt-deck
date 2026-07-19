@@ -1,20 +1,17 @@
-import { FileText, Layers, Wrench } from "lucide-react";
+import { FileText, Layers } from "lucide-react";
 
 interface SocialStripProps {
   promptCount: number;
   categoryCount: number;
-  toolCount: number;
 }
 
 export function SocialStrip({
   promptCount,
   categoryCount,
-  toolCount,
 }: SocialStripProps) {
   const stats = [
     { icon: FileText, value: promptCount, label: "Prompts" },
     { icon: Layers, value: categoryCount, label: "Categories" },
-    { icon: Wrench, value: toolCount, label: "Tools" },
   ];
 
   return (

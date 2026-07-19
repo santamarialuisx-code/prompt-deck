@@ -11,42 +11,23 @@ import type { PromptFile } from "@/lib/mdx";
 interface GalleryClientProps {
   prompts: PromptFile[];
   categories: string[];
-  tools: string[];
-  platforms: string[];
   hasAccess: boolean;
   embedded?: boolean;
 }
 
-function GalleryInner({ prompts, categories, tools, platforms, hasAccess, embedded }: GalleryClientProps) {
+function GalleryInner({ prompts, categories, hasAccess, embedded }: GalleryClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     const category = searchParams.get("category") || "";
-    const tool = searchParams.get("tool") || "";
-    const platform = searchParams.get("platform") || "";
     const q = searchParams.get("q")?.toLowerCase() || "";
 
     return prompts.filter((p) => {
       if (category && p.category !== category) return false;
-      if (tool && !p.tools.some((t) => t.toLowerCase() === tool.toLowerCase()))
-        return false;
-      if (
-        platform &&
-        !p.platforms.some(
-          (pl) => pl.toLowerCase() === platform.toLowerCase()
-        )
-      )
-        return false;
       if (q) {
-        const haystack = [
-          p.title,
-          p.description || "",
-          p.category,
-          ...p.tools,
-          ...p.platforms,
-        ]
+        const haystack = [p.title, p.description || "", p.category]
           .join(" ")
           .toLowerCase();
         if (!haystack.includes(q)) return false;
@@ -72,8 +53,6 @@ function GalleryInner({ prompts, categories, tools, platforms, hasAccess, embedd
     <div className="space-y-8">
       <FilterBar
         categories={categories}
-        tools={tools}
-        platforms={platforms}
         resultCount={filtered.length}
         totalCount={prompts.length}
         embedded={embedded}

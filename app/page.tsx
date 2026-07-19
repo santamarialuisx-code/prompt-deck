@@ -37,16 +37,9 @@ export default async function Home() {
   const allPrompts = getAllPrompts();
 
   const categories = [...new Set(allPrompts.map((p) => p.category))].sort();
-  const tools = [
-    ...new Set(allPrompts.flatMap((p) => p.tools)),
-  ].sort();
-  const platforms = [
-    ...new Set(allPrompts.flatMap((p) => p.platforms)),
-  ].sort();
 
   const promptCount = allPrompts.length;
   const categoryCount = categories.length;
-  const toolCount = tools.length;
 
   const hasAccess = await canAccessPrompt(true);
 
@@ -67,7 +60,6 @@ export default async function Home() {
         <SocialStrip
           promptCount={promptCount}
           categoryCount={categoryCount}
-          toolCount={toolCount}
         />
       </section>
 
@@ -79,14 +71,12 @@ export default async function Home() {
               Prompt Gallery
             </h2>
             <p className="mt-3 text-lg text-gray-400">
-              Browse all prompts, filter by category, tool, or platform
+              Browse all prompts, filter by category
             </p>
           </div>
           <GalleryClient
             prompts={allPrompts}
             categories={categories}
-            tools={tools}
-            platforms={platforms}
             hasAccess={hasAccess}
             embedded
           />

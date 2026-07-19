@@ -56,8 +56,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const allPrompts = getAllPrompts();
   const categories = [...new Set(allPrompts.map((p) => p.category))].sort();
-  const tools = [...new Set(allPrompts.flatMap((p) => p.tools))].sort();
-  const platforms = [...new Set(allPrompts.flatMap((p) => p.platforms))].sort();
 
   const categoryName = formatCategoryName(category);
   const description =
@@ -77,8 +75,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <GalleryClient
         prompts={prompts}
         categories={categories}
-        tools={tools}
-        platforms={platforms}
         hasAccess={hasAccess}
       />
     </main>
