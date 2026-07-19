@@ -11,6 +11,7 @@ interface FilterBarProps {
   platforms: string[];
   resultCount: number;
   totalCount: number;
+  embedded?: boolean;
 }
 
 function formatLabel(value: string): string {
@@ -27,6 +28,7 @@ export function FilterBar({
   platforms,
   resultCount,
   totalCount,
+  embedded,
 }: FilterBarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -56,9 +58,9 @@ export function FilterBar({
 
   const clearAll = useCallback(() => {
     startTransition(() => {
-      router.push("/gallery", { scroll: false });
+      router.push(embedded ? "/?#gallery" : "/gallery", { scroll: false });
     });
-  }, [router, startTransition]);
+  }, [router, startTransition, embedded]);
 
   return (
     <div className="space-y-4">

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getAllPrompts, getPromptsByCategory } from "@/lib/mdx";
+import { canAccessPrompt } from "@/lib/access";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
 import type { Metadata } from "next";
 
@@ -62,6 +63,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const description =
     categoryDescriptions[category] || `Browse ${categoryName} prompts.`;
 
+  const hasAccess = await canAccessPrompt(true);
+
   return (
     <main className="mx-auto max-w-6xl px-6 py-12">
       <div className="mb-10">
@@ -76,6 +79,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         categories={categories}
         tools={tools}
         platforms={platforms}
+        hasAccess={hasAccess}
       />
     </main>
   );

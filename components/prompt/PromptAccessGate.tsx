@@ -3,32 +3,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BuyButton } from "@/components/checkout/BuyButton";
+import { extractPromptText } from "@/lib/prompt-utils";
 import type { PromptFile } from "@/lib/mdx";
 
 interface PromptAccessGateProps {
   prompt: PromptFile;
   hasAccess: boolean;
-}
-
-function extractPromptText(content: string): string {
-  const lines = content.split("\n");
-  let capturing = false;
-  const promptLines: string[] = [];
-
-  for (const line of lines) {
-    if (line.match(/^##\s+Prompt/i)) {
-      capturing = true;
-      continue;
-    }
-    if (capturing && line.match(/^##\s/)) {
-      break;
-    }
-    if (capturing) {
-      promptLines.push(line);
-    }
-  }
-
-  return promptLines.join("\n").trim();
 }
 
 export function PromptAccessGate({ prompt, hasAccess }: PromptAccessGateProps) {

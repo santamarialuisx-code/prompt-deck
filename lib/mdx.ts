@@ -16,6 +16,7 @@ export interface PromptFrontmatter {
   sort_order: number;
   negative_prompt?: string;
   example_output_url?: string;
+  card_image_url?: string;
 }
 
 export interface PromptFile extends PromptFrontmatter {

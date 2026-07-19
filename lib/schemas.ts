@@ -15,6 +15,7 @@ export const promptFrontmatterSchema = z.object({
   sort_order: z.number().int().default(0),
   negative_prompt: z.string().optional(),
   example_output_url: z.string().optional(),
+  card_image_url: z.string().optional(),
 });
 
 export type PromptFrontmatterInput = z.input<typeof promptFrontmatterSchema>;

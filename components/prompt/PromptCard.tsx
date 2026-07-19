@@ -1,130 +1,93 @@
 "use client";
 
-import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import Image from "next/image";
+import { ClipboardCopy, Lock } from "lucide-react";
 import { CategoryBadge } from "./CategoryBadge";
+import { CopyToast } from "./CopyToast";
+import { getCategoryGradient } from "@/lib/category-gradients";
 import type { PromptFile } from "@/lib/mdx";
 
 interface PromptCardProps {
   prompt: PromptFile;
-  onClick?: (prompt: PromptFile) => void;
+  hasAccess: boolean;
+  onCopy?: (prompt: PromptFile) => void;
+  onNavigate?: (prompt: PromptFile) => void;
 }
 
-function getPromptHref(prompt: PromptFile): string {
-  if (prompt.is_free) {
-    return `/free/${prompt.slug}`;
-  }
-  return `/gallery/${prompt.category}/${prompt.slug}`;
-}
+export function PromptCard({ prompt, hasAccess, onCopy, onNavigate }: PromptCardProps) {
+  const [showToast, setShowToast] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
-export function PromptCard({ prompt, onClick }: PromptCardProps) {
-  if (onClick) {
-    return (
-      <Card className="cursor-pointer transition-shadow hover:shadow-md" onClick={() => onClick(prompt)}>
-        <CardHeader>
-          <div className="flex items-start justify-between gap-2">
-            <CardTitle className="line-clamp-2">{prompt.title}</CardTitle>
-            {prompt.is_free ? (
-              <Badge variant="default" className="shrink-0 bg-green-600 hover:bg-green-700">
-                Free
-              </Badge>
-            ) : (
-              <Badge variant="outline" className="shrink-0">
-                Paid
-              </Badge>
-            )}
-          </div>
-          <CardDescription className="line-clamp-2">
-            {prompt.description || "No description available."}
-          </CardDescription>
-        </CardHeader>
+  const imageUrl = !imgError
+    ? prompt.card_image_url || prompt.example_output_url || undefined
+    : undefined;
+  const useGradient = !imageUrl;
 
-        <CardContent>
-          <div className="flex flex-wrap gap-1.5">
-            <CategoryBadge category={prompt.category} />
-            {prompt.tools.map((tool) => (
-              <Badge key={tool} variant="outline" className="text-xs">
-                {tool}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-
-        <CardFooter>
-          <div className="flex flex-wrap gap-1">
-            {prompt.platforms.map((platform) => (
-              <span
-                key={platform}
-                className="text-xs text-muted-foreground"
-              >
-                {platform}
-                {prompt.platforms.indexOf(platform) < prompt.platforms.length - 1
-                  ? " · "
-                  : ""}
-              </span>
-            ))}
-          </div>
-        </CardFooter>
-      </Card>
-    );
-  }
+  const handleClick = () => {
+    if (!prompt.is_free && !hasAccess) {
+      onNavigate?.(prompt);
+      return;
+    }
+    onCopy?.(prompt);
+    setShowToast(true);
+  };
 
   return (
-    <Link href={getPromptHref(prompt)} className="block">
-      <Card className="h-full transition-shadow hover:shadow-md">
-        <CardHeader>
-          <div className="flex items-start justify-between gap-2">
-            <CardTitle className="line-clamp-2">{prompt.title}</CardTitle>
-            {prompt.is_free ? (
-              <Badge variant="default" className="shrink-0 bg-green-600 hover:bg-green-700">
-                Free
-              </Badge>
-            ) : (
-              <Badge variant="outline" className="shrink-0">
-                Paid
-              </Badge>
-            )}
-          </div>
-          <CardDescription className="line-clamp-2">
-            {prompt.description || "No description available."}
-          </CardDescription>
-        </CardHeader>
+    <div
+      className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl"
+      onClick={handleClick}
+    >
+      {/* Image or gradient fallback */}
+      {imageUrl ? (
+        <Image
+          src={imageUrl}
+          alt={prompt.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          onError={() => setImgError(true)}
+        />
+      ) : (
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${getCategoryGradient(prompt.category)}`}
+        />
+      )}
 
-        <CardContent>
-          <div className="flex flex-wrap gap-1.5">
-            <CategoryBadge category={prompt.category} />
-            {prompt.tools.map((tool) => (
-              <Badge key={tool} variant="outline" className="text-xs">
-                {tool}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
+      {/* Hover overlay — hidden on touch devices via media query */}
+      <div className="absolute inset-0 flex flex-col justify-end bg-black/0 p-3 opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:bg-black/60 group-hover:opacity-100 motion-reduce:transition-none max-md:!hidden">
+        <div className="mb-auto flex justify-end">
+          {prompt.is_free || hasAccess ? (
+            <ClipboardCopy className="h-5 w-5 text-white/80 transition-transform duration-200 group-hover:scale-110" />
+          ) : (
+            <Lock className="h-5 w-5 text-white/80" />
+          )}
+        </div>
+        <div>
+          <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-white">
+            {prompt.title}
+          </h3>
+          <CategoryBadge category={prompt.category} className="bg-white/20 text-white backdrop-blur-sm" />
+        </div>
+      </div>
 
-        <CardFooter>
-          <div className="flex flex-wrap gap-1">
-            {prompt.platforms.map((platform) => (
-              <span
-                key={platform}
-                className="text-xs text-muted-foreground"
-              >
-                {platform}
-                {prompt.platforms.indexOf(platform) < prompt.platforms.length - 1
-                  ? " · "
-                  : ""}
-              </span>
-            ))}
-          </div>
-        </CardFooter>
-      </Card>
-    </Link>
+      {/* Touch devices: always-visible bottom bar */}
+      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent p-3 md:hidden">
+        <div className="min-w-0 flex-1">
+          <h3 className="line-clamp-1 text-sm font-semibold text-white">
+            {prompt.title}
+          </h3>
+          <CategoryBadge category={prompt.category} className="mt-1 bg-white/20 text-white backdrop-blur-sm" />
+        </div>
+        {prompt.is_free || hasAccess ? (
+          <ClipboardCopy className="ml-2 h-4 w-4 shrink-0 text-white/80" />
+        ) : (
+          <Lock className="ml-2 h-4 w-4 shrink-0 text-white/80" />
+        )}
+      </div>
+
+      {/* Copy toast */}
+      <CopyToast show={showToast} />
+    </div>
   );
 }

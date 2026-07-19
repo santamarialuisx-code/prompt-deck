@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { getAllPrompts, getFreeSamples } from "@/lib/mdx";
-import { PromptGrid } from "@/components/prompt/PromptGrid";
+import { CopyablePromptGrid } from "@/components/prompt/CopyablePromptGrid";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
@@ -45,8 +45,9 @@ export default async function AccountPromptsPage() {
 
       {hasAccess ? (
         /* Full prompt grid */
-        <PromptGrid
+        <CopyablePromptGrid
           prompts={prompts}
+          hasAccess={hasAccess}
           emptyMessage="No prompts available."
         />
       ) : (
@@ -73,8 +74,9 @@ export default async function AccountPromptsPage() {
               <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
                 Free Samples
               </h2>
-              <PromptGrid
+              <CopyablePromptGrid
                 prompts={freeSamples}
+                hasAccess={true}
                 emptyMessage="No free samples available."
               />
             </div>

@@ -4,7 +4,7 @@ import { getPromptBySlug, getPromptsByCategory, getAllPrompts } from "@/lib/mdx"
 import { canAccessPrompt } from "@/lib/access";
 import { PromptDetail } from "@/components/prompt/PromptDetail";
 import { PromptAccessGate } from "@/components/prompt/PromptAccessGate";
-import { PromptCard } from "@/components/prompt/PromptCard";
+import { RelatedPrompts } from "@/components/prompt/RelatedPrompts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
@@ -122,16 +122,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
       )}
 
       {/* Related prompts */}
-      {allRelated.length > 0 && (
-        <div className="mt-12">
-          <h2 className="mb-4 text-xl font-semibold">Related Prompts</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {allRelated.map((rp) => (
-              <PromptCard key={rp.slug} prompt={rp} />
-            ))}
-          </div>
-        </div>
-      )}
+      <RelatedPrompts prompts={allRelated} />
     </main>
   );
 }

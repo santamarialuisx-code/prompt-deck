@@ -1,5 +1,5 @@
 import { getFreeSamples } from "@/lib/mdx";
-import { PromptGrid } from "@/components/prompt/PromptGrid";
+import { CopyablePromptGrid } from "@/components/prompt/CopyablePromptGrid";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -28,8 +28,9 @@ export default function FreePage() {
         </div>
       </div>
 
-      <PromptGrid
+      <CopyablePromptGrid
         prompts={freePrompts}
+        hasAccess={true}
         emptyMessage="No free samples available yet."
       />
     </main>

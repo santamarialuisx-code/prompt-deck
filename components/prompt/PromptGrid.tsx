@@ -5,13 +5,17 @@ import type { PromptFile } from "@/lib/mdx";
 
 interface PromptGridProps {
   prompts: PromptFile[];
-  onPromptClick?: (prompt: PromptFile) => void;
+  hasAccess: boolean;
+  onCopyPrompt?: (prompt: PromptFile) => void;
+  onNavigatePrompt?: (prompt: PromptFile) => void;
   emptyMessage?: string;
 }
 
 export function PromptGrid({
   prompts,
-  onPromptClick,
+  hasAccess,
+  onCopyPrompt,
+  onNavigatePrompt,
   emptyMessage = "No prompts found.",
 }: PromptGridProps) {
   if (prompts.length === 0) {
@@ -28,7 +32,9 @@ export function PromptGrid({
         <PromptCard
           key={prompt.slug}
           prompt={prompt}
-          onClick={onPromptClick}
+          hasAccess={hasAccess}
+          onCopy={onCopyPrompt}
+          onNavigate={onNavigatePrompt}
         />
       ))}
     </div>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPromptBySlug, getFreeSamples, getAllPrompts } from "@/lib/mdx";
 import { PromptAccessGate } from "@/components/prompt/PromptAccessGate";
-import { PromptCard } from "@/components/prompt/PromptCard";
+import { RelatedPrompts } from "@/components/prompt/RelatedPrompts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
@@ -119,16 +119,7 @@ export default async function FreePromptPage({ params }: FreePromptPageProps) {
       </div>
 
       {/* Related prompts */}
-      {allRelated.length > 0 && (
-        <div className="mt-12">
-          <h2 className="mb-4 text-xl font-semibold">You Might Also Like</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {allRelated.map((rp) => (
-              <PromptCard key={rp.slug} prompt={rp} />
-            ))}
-          </div>
-        </div>
-      )}
+      <RelatedPrompts prompts={allRelated} />
     </main>
   );
 }
